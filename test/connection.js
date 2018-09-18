@@ -1,11 +1,18 @@
 const mongoose = require('mongoose');
 
-// connect to mongoDB
-mongoose.connect('mongodb://localhost/testaroo');
+// ES6 promises vs. uisng mongoose 
+mongoose.Promise = global.Promise;
 
-// once is an event listener for just once connection has been made
-mongoose.connection.once('open', function(){
-    console.log('Connection has been made, now make fireworks...');
-}).on('error', function(){
-    console.log('Connection error:',error);
+// Connect to the db before tests run
+// create a before hook
+before(function(done){
+    // connect to mongoDB
+    mongoose.connect('mongodb://localhost/testaroo');
+    mongoose.connection.once('open', function(){
+        console.log('Connection has been made, now make fireworks...');
+        done();
+    }).on('error', function(error){
+        console.log('Connection error:',error);
+    });
 });
+

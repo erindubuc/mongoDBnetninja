@@ -1,4 +1,3 @@
-const mocha = require('mocha');
 // assert needs to be required from node
 const assert = require('assert');
 const MarioChar = require('../models/mariochar');
