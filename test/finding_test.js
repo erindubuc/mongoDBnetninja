@@ -14,7 +14,6 @@ describe('Finding records', function(){
     //   will grab character and save it to the database
     // save is asynchronous request so you can save and return promise -add then()
        char.save().then(function(){
-           assert(char.isNew === false); 
            done();
        });
     });
