@@ -2,8 +2,8 @@
 const mongoose = require('mongoose');
 
 //Set up default mongoose connection
-const mongoDB = 'mongodb://localhost/testaroo';
-// const mongoDB = 'mongodb://test:testing1@ds153978.mlab.com:53978/testaroo';
+// const mongoDB = 'mongodb://localhost/testaroo';
+const mongoDB = 'mongodb://test:testing1@ds153978.mlab.com:53978/testaroo';
 mongoose.connect(mongoDB);
 
 // ES6 promises vs. uisng mongoose 
@@ -19,7 +19,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // Connect to the db before tests run
 before(function(done){
     // connect to mongoDB
-    mongoose.connect('mongodb://localhost/testaroo', { useNewUrlParser: true });
+    mongoose.connect('mongodb://test:testing1@ds153978.mlab.com:53978/testaroo', { useNewUrlParser: true });
     
     mongoose.connection.once('open', function(){
         console.log('Connection has been made, now make fireworks...');
